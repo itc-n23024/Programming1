@@ -1,9 +1,11 @@
 def square(x):
-    if isinstance(x, (int, float)):
-        return x**2
-    else:
-        raise ValueError("square", x)
+    if not isinstance(x, (int, float)):
+        if isinstance(x, str) and x.isdigit():
+            x = int(x)
+        else:
+            raise ValueError("square", x)
+    return x**x
 
 
-print(square(8))
+print(square(2))
 print(square("a"))
